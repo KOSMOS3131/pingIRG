@@ -1,20 +1,16 @@
-# -*- coding: utf-8 -*-
-import redis
 import os
 import telebot
-# import some_api_lib
-# import ...
 
-# Example of your code beginning
-#           Config vars
-token = os.environ['TELEGRAM_TOKEN']
-some_api_token = os.environ['SOME_API_TOKEN']
-#             ...
+hostname = "google.co"
+channel = '@irgping'
+token = '688285869:AAE4lVtVdfeQcRAxQ2H5zxYM724IOxRpsL8'
 
-# If you use redis, install this add-on https://elements.heroku.com/addons/heroku-redis
-r = redis.from_url(os.environ.get("REDIS_URL"))
+response = os.system('ping ' + hostname)
+bot = telebot.TeleBot(token)
 
-#       Your bot code below
-# bot = telebot.TeleBot(token)
-# some_api = some_api_lib.connect(some_api_token)
-#              ...
+
+if response == 0:
+  print(hostname + ' is up!')
+else:
+  print(hostname + ' is down!')
+  bot.send_message(channel, hostname + ' is down!')
